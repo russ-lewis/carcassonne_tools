@@ -28,7 +28,7 @@ def display_tile(tile, win, center, radius):
            center - an (x,y) tuple, the center of the place to draw
            radius - half the width of the tile
     """
-
+    radius  *= math.sqrt(2) 
     center_x = center[0]
     center_y = center[1]
 
@@ -144,8 +144,8 @@ def display_tile(tile, win, center, radius):
             x1 = center_x
             y1 = center_y
 
-            x2 = center_x + radius * math.cos(N+rot)
-            y2 = center_y - radius * math.sin(N+rot)
+            x2 = center_x + .75*radius * math.cos(N+rot)
+            y2 = center_y - .75*radius * math.sin(N+rot)
 
             win.line(x1,y1, x2,y2, fill="white", width=radius/10)
 

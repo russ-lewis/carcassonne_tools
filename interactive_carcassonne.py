@@ -55,11 +55,14 @@ class WindowState:
 
         win.text(675,175, TILES[self._tile_indx][0])
 
-        win.text(625,300, " n,p   - change tiles\n"
-                          "  r    - rotate tile\n"
+        win.text(620,300, " n,p   - change tiles\n"
+                          " r  - rotate tile\n"
                           "arrows - move\n"
                           "ENTER  - place tile\n"
-                          "  q    - quit", size=12)
+                          " q  - quit\n"
+                          " t  - test trace_road_1_dir\n"
+                          " y  - test trace_road\n"
+                          " u  - test trace_city\n" , size=12)
 
     def next(self):
         self._tile_indx += 1
@@ -140,6 +143,39 @@ def key_callback(win, game, win_state, event):
 
     elif event == "Return":
         win_state.add(game)
+    
+    elif event =="t":
+        print('Side? 0 = North, 1 = East, 2 = South, 3 = West')
+        side = int(input())
+        print(f'Testing trace_road_one_direction for {win_state._x,win_state._y,side}...')
+        x = game.trace_road_one_direction(win_state._x,win_state._y,side)
+        print()
+        print()
+        print('Pathway :',x)
+
+    elif event =="y":
+        print('Side? 0 = North, 1 = East, 2 = South, 3 = West')
+        side = int(input())
+        print(f'Testing trace_road for {win_state._x,win_state._y,side}...')
+        x = game.trace_road(win_state._x,win_state._y,side)
+        print()
+        print()
+        print('Pathway :',x)
+
+    elif event =="u":
+        print('Side? 0 = North, 1 = East, 2 = South, 3 = West')
+        side = int(input())
+        print(f'Testing trace_city for {win_state._x,win_state._y,side}...')
+        x = game.trace_city(win_state._x,win_state._y,side)
+        print()
+        print()
+        print('City edges:',x[0])
+        print()
+        print()
+        print('Complete City?',x[0])
+        print()
+        print()
+        print(f'There are {len(x[1])} edges in this city')
 
     else:
         print(f"Unrecognized keystroke: '{event}'")

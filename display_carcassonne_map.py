@@ -51,7 +51,7 @@ def display_map(game, win, size):
     hei_tiles = max_y-min_y+1
 
     spac = min(100, size/max(wid_tiles,hei_tiles))
-    rad  = spac/2 * .95
+    rad  = spac/2 * .99
 
     cx = spac * (-min_x+.5)
     cy = spac * ( max_y+.5)

@@ -3,7 +3,6 @@
 import sys
 import random
 
-import carcassonne_tile
 import carcassonne_map
 
 import graphics
